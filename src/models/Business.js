@@ -58,7 +58,6 @@ const businessSchema = new mongoose.Schema(
       type: String,
       unique: true,
       sparse: true,
-      index: true,
     },
     panNumber: {
       type: String,
@@ -106,7 +105,6 @@ const businessSchema = new mongoose.Schema(
       type: String,
       unique: true,
       sparse: true,
-      index: true,
     },
 
     // Registration Status
@@ -119,21 +117,6 @@ const businessSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
-/**
- * Index for userId to optimize queries
- */
-businessSchema.index({ userId: 1 });
-
-/**
- * Index on distributorCode for unique lookup
- */
-businessSchema.index({ distributorCode: 1 }, { unique: true, sparse: true });
-
-/**
- * Index on gstNumber for unique lookup
- */
-businessSchema.index({ gstNumber: 1 }, { unique: true, sparse: true });
 
 /**
  * Remove __v field from JSON responses
