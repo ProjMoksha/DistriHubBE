@@ -1,0 +1,452 @@
+{
+  "info": {
+    "name": "DistriHub Backend API",
+    "description": "Complete API collection for DistriHub Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"SecurePass@123\",\n  \"confirmPassword\": \"SecurePass@123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/register",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"SecurePass@123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/auth/profile",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "profile"]
+            }
+          }
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"newemail@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/profile",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "profile"]
+            }
+          }
+        },
+        {
+          "name": "Delete Profile",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/auth/profile",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "profile"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Business - Step 1",
+      "item": [
+        {
+          "name": "Create Step 1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"legalBusinessName\": \"ABC Trading Company\",\n  \"proprietorName\": \"John Doe\",\n  \"gstNumber\": \"19AABCT1234H1Z0\",\n  \"businessPhone\": \"9876543210\",\n  \"businessEmail\": \"business@example.com\",\n  \"addressLine1\": \"123 Business Street\",\n  \"area\": \"Downtown\",\n  \"city\": \"Mumbai\",\n  \"state\": \"Maharashtra\",\n  \"pincode\": \"400001\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/business/step1",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step1"]
+            }
+          }
+        },
+        {
+          "name": "Get Step 1",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/business/step1/{{userId}}",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step1", "{{userId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Step 1",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"legalBusinessName\": \"XYZ Trading Company Updated\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/business/step1/{{userId}}",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step1", "{{userId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Step 1",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/business/step1/{{userId}}",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step1", "{{userId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Business - Step 2",
+      "item": [
+        {
+          "name": "Create Step 2 (with File)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "businessType",
+                  "value": "Wholesaler"
+                },
+                {
+                  "key": "gstNumber",
+                  "value": "19AABCT1234H1Z0"
+                },
+                {
+                  "key": "panNumber",
+                  "value": "AABCA1234A"
+                },
+                {
+                  "key": "businessLicenceImage",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/business/step2",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step2"]
+            }
+          }
+        },
+        {
+          "name": "Get Step 2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/business/step2/{{userId}}",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step2", "{{userId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Step 2",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "businessType",
+                  "value": "Distributor"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/business/step2/{{userId}}",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step2", "{{userId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Step 2",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/business/step2/{{userId}}",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step2", "{{userId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Business - Step 3",
+      "item": [
+        {
+          "name": "Create Step 3",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"warehouseName\": \"Main Warehouse\",\n  \"contactPerson\": \"Jane Smith\",\n  \"fullAddress\": \"456 Warehouse Road, Industrial Area, Mumbai\",\n  \"warehouseCity\": \"Mumbai\",\n  \"warehousePincode\": \"400051\",\n  \"locationMapAddress\": \"https://maps.example.com/location\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/business/step3",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step3"]
+            }
+          }
+        },
+        {
+          "name": "Get Step 3",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/business/step3/{{userId}}",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step3", "{{userId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Step 3",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"warehouseName\": \"Secondary Warehouse\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/business/step3/{{userId}}",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step3", "{{userId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Step 3",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/business/step3/{{userId}}",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step3", "{{userId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Business - Step 4",
+      "item": [
+        {
+          "name": "Complete Registration (Step 4)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/business/step4",
+              "host": ["{{base_url}}"],
+              "path": ["business", "step4"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Utilities",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000/api",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "userId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
